@@ -74,8 +74,6 @@ def check_empty():  # return true if
 
 
 def check_game_state():
-    # if not check_win(board) and check_empty(board):
-    #     return 'Game not finished'
     if not check_win() and not check_empty():
         return 'Draw'
     elif check_win():
@@ -126,7 +124,6 @@ while inp_comm != 'exit':
     print_board()
     for i in range(9):
         if i % 2 == 0:  # player 1 turn 'X'
-            # make_users_move()
             move_funcs[player_1]('X')
             print_board()
             game_state = check_game_state()
