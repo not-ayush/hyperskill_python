@@ -125,7 +125,7 @@ def minimax(board_: list, is_maxing: bool = True, depth: int = 0):
         moves = return_empty_places(board_)
         for m in moves:
             board_[m[0]][m[1]] = max_player if is_maxing else min_player
-            s = minimax(board_, not is_maxing, depth + 1)
+            s += minimax(board_, not is_maxing, depth + 1)
             if is_maxing:
                 best_score = max(s, best_score)
             elif not is_maxing:
@@ -133,9 +133,9 @@ def minimax(board_: list, is_maxing: bool = True, depth: int = 0):
             board_[m[0]][m[1]] = ' '
         return best_score
     elif result[0] == max_player:
-        return 10
+        return 10 - depth
     elif result[0] == min_player:
-        return -10
+        return -10 + depth
     elif result == "Draw":
         return 0
 
